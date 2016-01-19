@@ -44,7 +44,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 	};
 
 	{
-		if(vehicle _x == _x && alive _x || vehicle _x != _x && (crew vehicle _x) select 0 == _x && alive _x) then
+		if ((vehicle _x == _x && alive _x || vehicle _x != _x && (crew vehicle _x) select 0 == _x && alive _x) && (!isObjectHidden _x)) then
 		{
 			_visPos = getPosATLVisual _x;
 			if(surfaceIsWater _visPos) then  {_visPos = getPosASLVisual _x;};

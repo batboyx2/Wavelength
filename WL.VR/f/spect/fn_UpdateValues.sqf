@@ -58,7 +58,7 @@ while {true} do
 			f_cam_listUnits pushBack _x;
 			lbSetColor [_listBox,_index,[side _x,false] call BIS_fnc_sideColor];
 			{
-				if(alive _x) then
+				if((alive _x) && !(isObjectHidden _x)) then
 					{
 						if(!(_x in f_cam_listUnits) && !(_x iskindof "VirtualMan_F")) then
 						{
@@ -111,7 +111,7 @@ while {true} do
 				f_cam_listUnits = f_cam_listUnits - [_x];
 				[] call f_cam_checkIndex;
 			};
-			if(!alive _x) then
+			if(!alive _x || (isObjectHidden _x)) then
 			{
 				if(_index >= 0) then
 				{

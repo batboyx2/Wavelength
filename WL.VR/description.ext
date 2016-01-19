@@ -88,7 +88,7 @@ enableDebugConsole = 1;
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 // Group respawn test
-respawn = 4;
+respawn = 3;
 respawndelay = 3;
 respawnOnStart = 0;
 respawnTemplates[] = {"Seagull","f_spectator","f_JIP"};
@@ -224,6 +224,34 @@ class Params
         code = "f_param_spawnGunners = %1";
     };
 
+// ============================================================================================
+
+// WL - JIP and Reinforcement System Options
+// Credits: Bismarck
+    class f_param_maxSpawns	//controls how many respawns a certain player can perform
+    {
+        title = "Max Number of Allowed Respawns Per Person";
+        values[] = {0,1,2,3,4,5,1000};
+        texts[] = {"Respawns Off (Does not disable JIP)","One","Two","Three","Four","Five","Unlimited"};
+        default = 1;
+        code = "f_param_maxSpawns = %1";
+    };
+	class f_param_reinforceCooldown	//controls how long a player must wait after dying to respawn
+    {
+        title = "Wait Period After Death Before Respawn";
+        values[] = {0,1,5,10,15,20};
+        texts[] = {"No Wait Period","One Minute","Five Minutes","Ten Minutes","Fifteen Minutes","Twenty Minutes"};
+        default = 1;
+        code = "f_param_reinforceCooldown = %1";
+    };
+	class f_param_jipEnabled	//probably will be used exclusively for adversarial missions, only has effect if f_param_maxSpawns == 0
+    {
+        title = "Enable JIP? (Disable for adversarial, enable for cooperative)";
+        values[] = {0,1};
+        texts[] = {"Disable Jip","Enable Jip"};
+        default = 1;
+        code = "f_param_jipEnabled = %1";
+    };
 // ============================================================================================
 /*
 // F3 - Mission Conditions Selector
