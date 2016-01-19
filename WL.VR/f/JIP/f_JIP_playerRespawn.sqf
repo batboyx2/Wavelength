@@ -122,7 +122,7 @@ fnc_specInit = {
 		hint "jesus is here yo";
 		//dialog button added and stuff here
 		//[player, objNull, objNull, objNull, side] execVM "f\JIP\f_reinforceFT.sqf";
-		f_gv_respawnablePlayers = f_gv_respawnablePlayersArray + [_unit]; //list of all the spectator logics controlled by players which are allowed to be reinforcements
+		f_gv_respawnablePlayersArray = f_gv_respawnablePlayersArray + [_unit]; //list of all the spectator logics controlled by players which are allowed to be reinforcements
 	};
 };
 
