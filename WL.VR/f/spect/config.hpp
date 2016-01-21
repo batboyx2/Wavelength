@@ -657,8 +657,8 @@ class f_spec_dialog {
             y = -0.1 * safezoneH + safezoneY;
             w = 0.4 * safezoneW;
             h = 0.2 * safezoneH;
-        //    onMouseEnter = "[true] spawn f_fnc_showMenu;f_cam_menuShownTime=time;";
-           // onMouseExit = "[false] spawn f_fnc_showMenu;";
+			//onMouseEnter = "[true] spawn f_fnc_showMenu;f_cam_menuShownTime=time;";
+			//onMouseExit = "[false] spawn f_fnc_showMenu;";
             onMouseHolding = "f_cam_menuShownTime=time";
             onMouseMoving = "f_cam_menuShownTime=time";
             borderSize = 0;
