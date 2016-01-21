@@ -23,6 +23,19 @@ if (_uid2 == _uid4) exitWith {systemChat "Duplicates selected in AR and RAT slot
 if (_uid3 == _uid4) exitWith {systemChat "Duplicates selected in AAR and RAT slots."};
 
 
+//scrub to make sure there aren't any logics where the player disconnected
+{
+	if (isNull _x) then {
+		f_gv_respawnablePlayersArray = f_gv_respawnablePlayersArray - [_x];
+		publicVariable "f_gv_respawnablePlayersArray";
+	} else {
+		if !(isPlayer _x) then {
+			f_gv_respawnablePlayersArray = f_gv_respawnablePlayersArray - [_x];
+			publicVariable "f_gv_respawnablePlayersArray";
+		};
+	}
+} forEach f_gv_respawnablePlayersArray;
+
 {
 	if (_uid1 == getPlayerUID _x) then {_ftl = _x};
 	if (_uid2 == getPlayerUID _x) then {_ar = _x};
@@ -66,6 +79,8 @@ while {!_found} do {
 };
 
 {f_gv_respawnablePlayersArray = f_gv_respawnablePlayersArray - [_x]} forEach [_ftl,_ar,_aar,_rat];	//remove old spectator logics from list of respawnable players
+publicVariable "f_gv_respawnablePlayersArray";
+
 
 call compile format["grpJIP_%1 = createGroup %2",_i,_side];
 

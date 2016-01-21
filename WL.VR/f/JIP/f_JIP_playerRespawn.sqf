@@ -121,6 +121,7 @@ fnc_specInit = {
 		waitUntil {sleep 1; time > (_lastResTime + (60 * f_param_reinforceCooldown))};
 		//[player, objNull, objNull, objNull, side] execVM "f\JIP\f_reinforceFT.sqf";
 		f_gv_respawnablePlayersArray = f_gv_respawnablePlayersArray + [_unit]; //list of all the spectator logics controlled by players which are allowed to be reinforcements
+		publicVariable "f_gv_respawnablePlayersArray";
 	};
 };
 
