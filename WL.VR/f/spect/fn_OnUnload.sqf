@@ -60,14 +60,7 @@ _helpWindow ctrlSetStructuredText parseText (f_cam_helptext);
 ctrlShow [1315, !ctrlVisible 1315];
 ctrlShow [1310, !ctrlVisible 1310];
 ctrlShow [1300, !ctrlVisible 1300];
-ctrlShow [1305, !ctrlVisible 1305];
-
-ctrlShow [3001, !ctrlVisible 3001];
-ctrlShow [3002, !ctrlVisible 3002];
-ctrlShow [3003, !ctrlVisible 3003];
-//ctrlShow [1305, !ctrlVisible 1305];
-
-f_cam_menuWorking = true;
+ctrlShow [1305, !ctrlVisible 1305];f_cam_menuWorking = true;
 f_cam_menuShown = false;
 {
 	_pos = ctrlPosition (_displayDialog displayCtrl _x);
@@ -77,13 +70,3 @@ f_cam_menuShown = false;
 {(_displayDialog displayCtrl _x) ctrlCommit 0.6; } foreach f_cam_menuControls;
 waitUntil {ctrlCommitted (_displayDialog displayCtrl (f_cam_menuControls select 0))};
 f_cam_menuWorking = false;
-
-
-
-
-
-
-
-
-
-
