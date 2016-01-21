@@ -66,5 +66,8 @@ switch (_button) do {
 	};
 	case 6: {
 		[] call f_cam_AdminZeus;
-	}
+	};
+	case 7: {
+		[] call f_cam_Reinforce;
+	};
 };

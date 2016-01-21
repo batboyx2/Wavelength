@@ -94,7 +94,7 @@ _listBox = 2100;
 lbClear _listBox;
 // set inital values.
 #include "macros.hpp"
-f_cam_controls = [F_CAM_HELPFRAME,F_CAM_HELPBACK,F_CAM_MOUSEHANDLER,F_CAM_UNITLIST,F_CAM_MODESCOMBO,F_CAM_SPECTEXT,F_CAM_SPECHELP,F_CAM_HELPCANCEL,F_CAM_HELPCANCEL,F_CAM_MINIMAP,F_CAM_FULLMAP,F_CAM_BUTTIONFILTER,F_CAM_BUTTIONTAGS,F_CAM_BUTTIONTAGSNAME,F_CAM_BUTTIONFIRSTPERSON,F_CAM_BUTTIONTRACERS,F_CAM_BUTTIONZEUS,F_CAM_DIVIDER];
+f_cam_controls = [F_CAM_HELPFRAME,F_CAM_HELPBACK,F_CAM_MOUSEHANDLER,F_CAM_UNITLIST,F_CAM_MODESCOMBO,F_CAM_SPECTEXT,F_CAM_SPECHELP,F_CAM_HELPCANCEL,F_CAM_HELPCANCEL,F_CAM_MINIMAP,F_CAM_FULLMAP,F_CAM_BUTTIONFILTER,F_CAM_BUTTIONTAGS,F_CAM_BUTTIONTAGSNAME,F_CAM_BUTTIONFIRSTPERSON,F_CAM_BUTTIONTRACERS,F_CAM_BUTTIONZEUS,F_CAM_BUTTIONREINFORCE,F_CAM_DIVIDER];
 f_cam_units = [];
 f_cam_players = [];
 f_cam_startX = 0;
@@ -142,7 +142,7 @@ f_cam_muteSpectators = true;
 
 // ====================================================================================
 // Menu (Top left)
-f_cam_menuControls = [2115,2111,2112,2113,2114,2511,2512,2101,4302];
+f_cam_menuControls = [2115,2111,2112,2113,2114,2511,2512,2513,2101,4302];
 f_cam_menuShownTime = 0;
 f_cam_menuShown = true;
 f_cam_menuWorking = false;
@@ -350,7 +350,7 @@ f_cam_ToggleTracers = {
 		} forEach allUnits;
 	} else {
 		{
-			[_x] call hyp_fnc_traceFireRemove
+			[_x] call hyp_fnc_traceFireRemove;
 		} forEach allUnits;
 	};
 };
@@ -371,6 +371,54 @@ f_cam_AdminZeus = {
 		};
 	} else {
 		systemChat "You are not authorized to use Zeus.";
+	};
+};
+
+fnc_checkJipArray = {
+	//I put this code in a function to make things a little neater down below
+	params ["_unit"];
+	private ["_found","_index"];
+	_found = false;
+	_index = -1;
+	{
+		if ((getPlayerUID _unit) == (_x select 0)) then {
+			_found = true;
+			_index = f_gv_storedRespawnsArray find _x;
+		};
+	} forEach f_gv_storedRespawnsArray;
+	
+	[_found,_index]
+};
+
+f_cam_Reinforce = {
+	private ["_err"];
+	_err = "";
+	
+	_f = [player] call fnc_checkJipArray; _found = _f select 0; _index = _f select 1;	
+	_isjip = ((f_gv_storedRespawnsArray select _index) select 3);
+	_lastDeathTime = ((f_gv_storedRespawnsArray select _index) select 2);
+	_deaths = ((f_gv_storedRespawnsArray select _index) select 1);
+	_side = ((f_gv_storedRespawnsArray select _index) select 4);
+	
+	if (player in f_gv_respawnablePlayersArray) then {
+		systemChat "Yay!";
+	} else {
+		_err = if ((f_param_maxSpawns == 0) && !(_isjip)) then {"Reinforcement is disabled on this mission."} else {""};
+		_err = if ((f_param_jipEnabled == 0) && (_isjip)) then {"JIP is disabled on this mission."} else {""};
+		if (_err == "") then {
+			if (_deaths >= f_param_maxSpawns) then {
+				_err = "You have reached your maximum allotted number of reinforces on this mission.";
+			} else {
+				if ((_lastDeathTime + (60 * f_param_reinforceCooldown)) > time) then {
+					_err = format["You must wait %1 second(s) before reinforcing.", round ((_lastDeathTime + (60 * f_param_reinforceCooldown)) - time)];
+				};
+			};
+		};
+		if (_err != "") then {
+			systemChat ("Error: " + _err);
+		} else {
+			systemChat "Unknown error, try again?";
+		};
 	};
 };
 
