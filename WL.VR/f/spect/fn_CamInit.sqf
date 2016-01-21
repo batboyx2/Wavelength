@@ -94,7 +94,7 @@ _listBox = 2100;
 lbClear _listBox;
 // set inital values.
 #include "macros.hpp"
-f_cam_controls = [F_CAM_HELPFRAME,F_CAM_HELPBACK,F_CAM_MOUSEHANDLER,F_CAM_UNITLIST,F_CAM_MODESCOMBO,F_CAM_SPECTEXT,F_CAM_SPECHELP,F_CAM_HELPCANCEL,F_CAM_HELPCANCEL,F_CAM_MINIMAP,F_CAM_FULLMAP,F_CAM_BUTTIONFILTER,F_CAM_BUTTIONTAGS,F_CAM_BUTTIONTAGSNAME,F_CAM_BUTTIONFIRSTPERSON,F_CAM_BUTTIONTRACERS,F_CAM_BUTTIONZEUS,F_CAM_BUTTIONREINFORCE,F_CAM_DIVIDER];
+f_cam_controls = [F_CAM_HELPFRAME,F_CAM_HELPBACK,F_CAM_MOUSEHANDLER,F_CAM_UNITLIST,F_CAM_MODESCOMBO,F_CAM_SPECTEXT,F_CAM_SPECHELP,F_CAM_HELPCANCEL,F_CAM_HELPCANCEL,F_CAM_MINIMAP,F_CAM_FULLMAP,F_CAM_BUTTIONFILTER,F_CAM_BUTTIONTAGS,F_CAM_BUTTIONTAGSNAME,F_CAM_BUTTIONFIRSTPERSON,F_CAM_BUTTIONTRACERS,F_CAM_BUTTIONZEUS,F_CAM_DIVIDER,3001,3002,3003];
 f_cam_units = [];
 f_cam_players = [];
 f_cam_startX = 0;
@@ -401,7 +401,7 @@ f_cam_Reinforce = {
 	_side = ((f_gv_storedRespawnsArray select _index) select 4);
 	
 	if (player in f_gv_respawnablePlayersArray) then {
-		systemChat "Yay!";
+		{ctrlShow [_x, true]} forEach [3001,3002,3003];
 	} else {
 		_err = if ((f_param_maxSpawns == 0) && !(_isjip)) then {"Reinforcement is disabled on this mission."} else {""};
 		_err = if ((f_param_jipEnabled == 0) && (_isjip)) then {"JIP is disabled on this mission."} else {""};
@@ -455,6 +455,11 @@ createDialog "f_spec_dialog";
 // hide big map
 ((findDisplay 9228) displayCtrl 1360) ctrlShow false;
 ((findDisplay 9228) displayCtrl 1360) mapCenterOnCamera false;
+
+// hide reinforcements menu
+ctrlShow [3001, false];
+ctrlShow [3002, false];
+ctrlShow [3003, false];
 
 f_cam_helptext = "<t color='#EAA724'><br />Hold right-click to pan the camera<br />Use the scroll wheel or numpad+/- to zoom in and out.<br />Use ctrl + rightclick to fov zoom<br /><br />Press H to show and close the help window.<br />Press M to toggle between no map,minimap and full size map.<br />T for switching on tracers on the map<br/>Space to switch to freecam <br/>Press H to close this window</t>";
 ((findDisplay 9228) displayCtrl 1310) ctrlSetStructuredText parseText (f_cam_helptext);

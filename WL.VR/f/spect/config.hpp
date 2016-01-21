@@ -699,7 +699,14 @@ class f_spec_dialog {
             h = 0.375858 * safezoneH;
            // text = "<br /> Use the mouse or the WASD to control the camera, H to show and close the help window.<br /> Press M for the map.<br /> ";
         };
-
+		class SpecFrameReinforce: RscSpectFrame
+        {
+            idc = 3001;
+            x = 0.250000 * safezoneW + safezoneX;
+            y = 0.250000 * safezoneH + safezoneY;
+            w = 0.500000 * safezoneW;
+            h = 0.500000 * safezoneH;
+        };
 	};
     class controls {
         class SpectButtonExit: RscSpectButton
@@ -711,6 +718,26 @@ class f_spec_dialog {
             h = 0.0287929 * safezoneH;
             text = "Okay";
             action = "ctrlShow [1315, !ctrlVisible 1315];ctrlShow [1310, !ctrlVisible 1310];ctrlShow [1300, !ctrlVisible 1300];";
+        };
+		class SpectButtonExitReinforce: RscSpectButton
+        {
+            idc = 3002;
+            x = 0.705000 * safezoneW + safezoneX;
+            y = 0.710000 * safezoneH + safezoneY;
+            w = 0.035000 * safezoneW;
+            h = 0.030000 * safezoneH;
+            text = "Cancel";
+            action = "ctrlShow [3001, !ctrlVisible 3001];ctrlShow [3002, !ctrlVisible 3002];ctrlShow [3003, !ctrlVisible 3003];";
+        };
+		class SpectButtonConfirmReinforce: RscSpectButton
+        {
+            idc = 3003;
+            x = 0.260000 * safezoneW + safezoneX;
+            y = 0.710000 * safezoneH + safezoneY;
+            w = 0.035000 * safezoneW;
+            h = 0.030000 * safezoneH;
+            text = "Confirm";
+            action = "";
         };
         class CinematicCameraButton: RscSpectButton
         {
@@ -881,3 +908,28 @@ class f_spec_dialog {
         };
     };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
