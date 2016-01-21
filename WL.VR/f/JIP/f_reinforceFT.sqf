@@ -2,19 +2,44 @@
 // Credits: Written by Bismarck
 // ====================================================================================
 
-params ["_ftl","_ar","_aar","_rat","_side"];
-private ["_found","_w","_e","_g","_uNum","_i"];
+params ["_idc1","_idc2","_idc3","_idc4"];
+private ["_found","_w","_e","_g","_uNum","_i","_ftl","_ar","_aar","_rat","_side"];
+
+_uid1 = lbData [3101,_idc1];
+_uid2 = lbData [3102,_idc2];
+_uid3 = lbData [3103,_idc3];
+_uid4 = lbData [3104,_idc4];
+
+if (_uid1 == "") exitWith {systemChat "FTL was not selected."};
+if (_uid2 == "") exitWith {systemChat "AR was not selected."};
+if (_uid3 == "") exitWith {systemChat "AAR was not selected."};
+if (_uid4 == "") exitWith {systemChat "RAT was not selected."};
+
+if (_uid1 == _uid2) exitWith {systemChat "Duplicates selected in FTL and AR slots."};
+if (_uid1 == _uid3) exitWith {systemChat "Duplicates selected in FTL and AAR slots."};
+if (_uid1 == _uid4) exitWith {systemChat "Duplicates selected in FTL and RAT slots."};
+if (_uid2 == _uid3) exitWith {systemChat "Duplicates selected in AR and AAR slots."};
+if (_uid2 == _uid4) exitWith {systemChat "Duplicates selected in AR and RAT slots."};
+if (_uid3 == _uid4) exitWith {systemChat "Duplicates selected in AAR and RAT slots."};
+
+
+{
+	if (_uid1 == getPlayerUID _x) then {_ftl = _x};
+	if (_uid2 == getPlayerUID _x) then {_ar = _x};
+	if (_uid3 == getPlayerUID _x) then {_aar = _x};
+	if (_uid4 == getPlayerUID _x) then {_rat = _x};
+} forEach f_gv_respawnablePlayersArray;
 
 _found = false;
 _i = 0;
-/*
+
 if (isNil "_side") then {
 	_w = 0; _e = 0; _g = 0;
 	{
 		switch (side _x) do {
 			case west:			{_w = _w + 1};
 			case east:			{_e = _e + 1};
-			case resistance	{_g = _g + 1};
+			case resistance:	{_g = _g + 1};
 		};
 	} forEach playableUnits;
 	if (_w > _e) then {
@@ -26,10 +51,15 @@ if (isNil "_side") then {
 	} else {
 		if (_g > _e) then {
 			_side = resistance;
+		} else {
+			_side = east;
 		};
 	};
 };
-*/
+
+if (isNil "_side") then {_side = west;};//for testing porpoises
+
+
 while {!_found} do {
 	_i = _i + 1;
 	_found = call compile format["isNil 'grpJIP_%1'",_i];

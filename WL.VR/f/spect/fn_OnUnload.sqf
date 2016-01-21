@@ -65,6 +65,10 @@ ctrlShow [1305, !ctrlVisible 1305];
 ctrlShow [3001, !ctrlVisible 3001];
 ctrlShow [3002, !ctrlVisible 3002];
 ctrlShow [3003, !ctrlVisible 3003];
+ctrlShow [3101, !ctrlVisible 3101];
+ctrlShow [3102, !ctrlVisible 3102];
+ctrlShow [3103, !ctrlVisible 3103];
+ctrlShow [3104, !ctrlVisible 3104];
 //ctrlShow [1305, !ctrlVisible 1305];
 
 f_cam_menuWorking = true;
