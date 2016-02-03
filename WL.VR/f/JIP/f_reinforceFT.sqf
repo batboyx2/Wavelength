@@ -45,10 +45,10 @@ _sideString = switch (_side) do {
 	case resistance:	{"I"};
 };
 
-_uFTL	= call compile format["unitJIP_%1_1 = grpJIP_%1 createUnit ['%2_Soldier_TL_F', getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_1",_i,_sideString];
-_uAR	= call compile format["unitJIP_%1_2 = grpJIP_%1 createUnit ['%2_soldier_AR_F', getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_2",_i,_sideString];
-_uAAR	= call compile format["unitJIP_%1_3 = grpJIP_%1 createUnit ['%2_Soldier_AAR_F', getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_3",_i,_sideString];
-_uRAT	= call compile format["unitJIP_%1_4 = grpJIP_%1 createUnit ['%2_Soldier_LAT_F', getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_4",_i,_sideString];
+_uFTL	= call compile format["unitJIP_%1_1 = grpJIP_%1 createUnit [%2_Soldier_TL_F, getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_1",_i,_sideString];
+_uAR	= call compile format["unitJIP_%1_2 = grpJIP_%1 createUnit [%2_soldier_AR_F, getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_2",_i,_sideString];
+_uAAR	= call compile format["unitJIP_%1_3 = grpJIP_%1 createUnit [%2_Soldier_AAR_F, getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_3",_i,_sideString];
+_uRAT	= call compile format["unitJIP_%1_4 = grpJIP_%1 createUnit [%2_Soldier_LAT_F, getMarkerPos 'respawn', [], 0, 'NONE']; unitJIP_%1_4",_i,_sideString];
 
 [
 	[
@@ -72,6 +72,7 @@ _uNum = 1;
 			[_i,_uNum],
 			{
 				_cam = player;
+				{[_x] call hyp_fnc_traceFireRemove} forEach allUnits;
 				f_cam_forcedExit = true;
 				closeDialog 1;
 				call F_fnc_RemoveHandlers;
@@ -79,8 +80,6 @@ _uNum = 1;
 				_cam cameraEffect ["Terminate","back"];
 				deleteVehicle _cam;
 				f_cam_VirtualCreated = false;
-				{[_x] call hyp_fnc_traceFireRemove} forEach allUnits;
-				{[_x] call hyp_fnc_traceFireClear} forEach allUnits;
 			}
 		],
 		"BIS_fnc_spawn",

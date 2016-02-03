@@ -3,8 +3,6 @@
 // ====================================================================================
 // Quick defines to make it less annoying.
 #define F_CAM_DISPLAY 9228
-#define F_CAM_REINFORCE 9229
-#define F_CAM_REINFORCECANCEL 3001
 #define F_CAM_HELPFRAME 1300
 #define F_CAM_HELPBACK 1305
 #define F_CAM_MOUSEHANDLER 123
