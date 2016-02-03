@@ -446,7 +446,7 @@ class RscSpectButton {
     x = 0;
     y = 0;
     };
-class RscSpectStructuredText {
+    class RscSpectStructuredText {
     access = 0;
     h = 0.035;
     idc = -1;
@@ -702,13 +702,10 @@ class f_spec_dialog {
 		class SpecFrameReinforce: RscSpectFrame
         {
             idc = 3001;
-			style = 16;
             x = 0.250000 * safezoneW + safezoneX;
             y = 0.250000 * safezoneH + safezoneY;
             w = 0.500000 * safezoneW;
             h = 0.500000 * safezoneH;
-			lineSpacing = 1;
-			colorBackground[] = BACKGROUND_COLOR;
         };
 	};
     class controls {
@@ -730,7 +727,7 @@ class f_spec_dialog {
             w = 0.035000 * safezoneW;
             h = 0.030000 * safezoneH;
             text = "Cancel";
-            action = "ctrlShow [3001, !ctrlVisible 3001];ctrlShow [3002, !ctrlVisible 3002];ctrlShow [3003, !ctrlVisible 3003];ctrlShow [3101, !ctrlVisible 3101];ctrlShow [3102, !ctrlVisible 3102];ctrlShow [3103, !ctrlVisible 3103];ctrlShow [3104, !ctrlVisible 3104];";
+            action = "ctrlShow [3001, !ctrlVisible 3001];ctrlShow [3002, !ctrlVisible 3002];ctrlShow [3003, !ctrlVisible 3003];";
         };
 		class SpectButtonConfirmReinforce: RscSpectButton
         {
@@ -740,42 +737,8 @@ class f_spec_dialog {
             w = 0.035000 * safezoneW;
             h = 0.030000 * safezoneH;
             text = "Confirm";
-            action = "[lbCurSel 3101,lbCurSel 3102,lbCurSel 3103,lbCurSel 3104] execVM ""f\JIP\f_reinforceFT.sqf"";";
+            action = "";
         };
-		
-		class ReinforceFTLBox: RscSpectListBox
-		{
-			idc = 3101;
-			x = 0.262500 * safezoneW + safezoneX;
-            y = 0.300000 * safezoneH + safezoneY;
-            w = 0.100000 * safezoneW;
-            h = 0.400000 * safezoneH;
-		};
-		class ReinforceARBox: RscSpectListBox
-		{
-			idc = 3102;
-			x = 0.387500 * safezoneW + safezoneX;
-            y = 0.300000 * safezoneH + safezoneY;
-            w = 0.100000 * safezoneW;
-            h = 0.400000 * safezoneH;
-		};
-		class ReinforceAARBox: RscSpectListBox
-		{
-			idc = 3103;
-			x = 0.512500 * safezoneW + safezoneX;
-            y = 0.300000 * safezoneH + safezoneY;
-            w = 0.100000 * safezoneW;
-            h = 0.400000 * safezoneH;
-		};
-		class ReinforceRATBox: RscSpectListBox
-		{
-			idc = 3104;
-			x = 0.637500 * safezoneW + safezoneX;
-            y = 0.300000 * safezoneH + safezoneY;
-            w = 0.100000 * safezoneW;
-            h = 0.400000 * safezoneH;
-		};
-		
         class CinematicCameraButton: RscSpectButton
         {
             idc = 2115;
