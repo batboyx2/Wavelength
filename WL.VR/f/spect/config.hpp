@@ -811,20 +811,6 @@ class f_spec_dialog {
             onMouseHolding = "f_cam_menuShownTime=time";
             onMouseMoving = "f_cam_menuShownTime=time";
         };
-		class ReinforceButton: RscSpectButton
-        {
-            idc = 2513;
-            x = 0.29498762 * safezoneW + safezoneX;
-            y = -5.99921e-005 * safezoneH + safezoneY;
-            w = 0.04 * safezoneW;
-            h = 0.02 * safezoneH;
-            text = "Join";
-            tooltip = "Create a reinforcement fireteam";
-            sizeEx = "(((((safezoneW / safezoneH) min 0.9) / 1.2) / 25) * 1)";
-            onButtonClick = "[_this select 0,7] call f_fnc_HandleMenu";
-            onMouseHolding = "f_cam_menuShownTime=time";
-            onMouseMoving = "f_cam_menuShownTime=time";
-        };
         class SpecUnitBox: RscSpectList
         {
             idc = 2100;
@@ -837,7 +823,7 @@ class f_spec_dialog {
         class SpecModes: RscSpectCombo
         {
             idc = 2101;
-            x = 0.33706264 * safezoneW + safezoneX;
+            x = 0.29498762 * safezoneW + safezoneX;
             y = -5.99921e-005 * safezoneH + safezoneY;
             w = 0.07 * safezoneW;
             h = 0.02 * safezoneH;
