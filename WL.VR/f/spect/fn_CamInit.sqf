@@ -145,7 +145,7 @@ f_cam_muteSpectators = true;
 f_cam_menuControls = [2115,2111,2112,2113,2114,2511,2512,2513,2101,4302];
 f_cam_menuShownTime = 0;
 f_cam_menuShown = true;
-f_cam_menuWorking = true; [] spawn {sleep 1; f_cam_menuWorking = false;};
+f_cam_menuWorking = false;
 f_cam_sideButton = 0; // 0 = ALL, 1 = BLUFOR , 2 = OPFOR, 3 = INDFOR , 4 = Civ
 f_cam_sideNames = ["All Sides","Blufor","Opfor","Indfor","Civ"];
 // ====================================================================================

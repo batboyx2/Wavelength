@@ -3,6 +3,7 @@ private ["_commitTime","_delta","_zLevel","_pos","_visPos","_mode","_currPos","_
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 // Menu shown/hidden
+if(abs (f_cam_menuShownTime - time) <= 0.1 && !f_cam_menuShown) then // disable due to being a bit wonky
 {
 	[true] spawn f_fnc_showMenu;
 };
