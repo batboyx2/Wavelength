@@ -43,8 +43,6 @@ enableSentences false;
 // WARNING: DO NOT DISABLE THIS COMPONENT
 if(isServer) then {
 	f_script_setLocalVars = [] execVM "f\common\f_setLocalVars.sqf";
-	f_gv_storedRespawnsArray = []; publicVariable "f_gv_storedRespawnsArray";
-	f_gv_respawnablePlayersArray = []; publicVariable "f_gv_respawnablePlayersArray";
 };
 
 // ====================================================================================
